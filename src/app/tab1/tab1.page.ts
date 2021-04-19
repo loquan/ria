@@ -44,7 +44,7 @@ export class Tab1Page {
   
         let data; 
        
-        this.http.get<any[]>('https://api.ratesapi.io/api/history?start_at=2021-03-01&end_at=2021-03-14').subscribe(
+        this.http.get<any[]>('https://api.ratesapi.io/api/history?start_at=2021-02-24&end_at=2021-03-17').subscribe(
           (data)=>{
               console.log("found");
               console.log(data);
@@ -85,7 +85,7 @@ selectCountry(country){
   this.service.country.next(country);  
   
  
-  this.router.navigateByUrl('tabs/tab2');
+ this.router.navigateByUrl('tabs/tab2');
 }  
 
 }

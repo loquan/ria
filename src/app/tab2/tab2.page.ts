@@ -78,7 +78,7 @@ export class Tab2Page  implements OnInit{
   countryUpdate(currentCountry){
 
     let dataInfo = [] ;
-    alert("update country"+currentCountry) ;
+    
     console.log("update country"+currentCountry);
     console.log("data updated"+this.data);
     if(this.data!=null) 
@@ -108,6 +108,14 @@ export class Tab2Page  implements OnInit{
        
  
     }
+    this.service.currencyMessage.subscribe( result =>{
+    
+      this.data=result;    
+      this.countryUpdate('USD'); 
+         
+   
+       
+     })
 
   }
 
@@ -120,14 +128,7 @@ export class Tab2Page  implements OnInit{
       
     });
 
-    this.service.currencyMessage.subscribe( result =>{
-    
-      this.data=result;    
-      this.countryUpdate('USD'); 
-         
    
-       
-     })
       
    
 
