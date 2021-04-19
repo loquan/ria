@@ -6,6 +6,16 @@ import { catchError, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
+
+interface currencyStruct {
+    countryString:string;
+    rateNum:number;
+    total:number;
+    eur:number;
+    countryNum:number;
+    
+}
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -16,14 +26,25 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 
+
 export class Tab1Page {
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  countries:string[]=[];
+  amount:number=200;
+  currencyData: any[]=[];
+  
   dateRange:string[]; 
   router: Router;
+  countries:string[]=[];
+  total:number[]=[];
+  rateNumber:number[]=[];
+  eur:string[]=[];
+  countryNum:string[]=[];
+  
+
+
   constructor(private service: CurrencyService,private http: HttpClient,private route:Router) {
 
     this.router=this.route;
@@ -32,6 +53,7 @@ export class Tab1Page {
 
     //let data=this.httpClient.get<any[]>(this.url );
     //console.log(data);
+
     this.search();
      
   }
@@ -57,17 +79,23 @@ export class Tab1Page {
                   let loop=0;
                   for( let countryKey in data['rates'][key])  
                   {
+                     let rate=parseFloat(data['rates'][key][countryKey]);
+                     this.countries[loop]=countryKey;
+                     this.rateNumber[loop]=rate;
+                     this.countryNum[loop]=rate.toFixed(5);       
+                     this.total[loop]=this.amount*rate;                  
+                     this.eur[loop]=(1/rate).toFixed(5);
                      
-                      this.countries[loop++]=countryKey;
+                      loop++;
                   }
                }
                count++;
-                    //console.log("country:"+country);
+                  
               }
-              
+              console.log("country:"+this.currencyData); 
     
           }) 
-
+          
      
      
 
@@ -87,5 +115,22 @@ selectCountry(country){
  
  this.router.navigateByUrl('tabs/tab2');
 }  
+
+keyup(event){
+  
+  if(event.keyCode==13){
+    alert("amount:"+this.amount);
+
+    for(let i=0;i<this.rateNumber.length;i++)
+    {
+      this.total[i]=this.rateNumber[i]*this.amount;
+    }
+    
+
+  }
+  
+
+
+}
 
 }

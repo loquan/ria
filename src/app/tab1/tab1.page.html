@@ -12,10 +12,24 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div *ngFor="let country of countries">
+  <ion-input placeholder="Text Input" placeholder="200 EUR" [(ngModel)]="amount" (keyup)="keyup($event)" ></ion-input>
+  <div *ngFor="let country of countries; index as i">
     
-    <ion-button color="primary" (click)="selectCountry(country)"  >{{country}}</ion-button>
+ 
+    <ion-button color="primary" (click)="selectCountry(country)" style="height:80px;width:400px" >
+      <ion-grid>
+        <ion-row>
+          <ion-col col-5><div></div><div>{{country}}</div><div></div></ion-col>
+          <ion-col col-2><ion-icon name="caret-forward-outline" style="background-color: coral;"></ion-icon></ion-col >
+              <ion-col col-5>
+                <div><h5>{{total[i]}}</h5></div>
+                <div>1&nbsp;EUR= {{countryNum[i]}}&nbsp;{{country}}</div>
+                <div>1&nbsp;{{country}}= EUR&nbsp; {{eur[i]}}</div>
+              </ion-col >   
+          
+        </ion-row>
+        </ion-grid>
+      </ion-button>
 </div>
 
 </ion-content>

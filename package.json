@@ -24,6 +24,7 @@
     "angular-google-charts": "^2.1.1",
     "chart.js": "^3.1.1",
     "cordova-plugin-advanced-http": "^3.1.0",
+    "ionicons": "^5.5.1",
     "ng2-google-charts": "^6.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
