@@ -79,12 +79,8 @@ export class Tab2Page  implements OnInit{
 
     let dataInfo = [] ;
     
-    console.log("update country"+currentCountry);
-    console.log("data updated"+this.data);
     if(this.data!=null) 
     {  
-      
-       
        if(currentCountry==null) 
            currentCountry='USD';
        
@@ -100,28 +96,25 @@ export class Tab2Page  implements OnInit{
          data: dataInfo
        };
 
-       setTimeout(()=>{
-       
 
-       },2000);
        
        
  
     }
-    this.service.currencyMessage.subscribe( result =>{
+
     
-      this.data=result;    
-      this.countryUpdate('USD'); 
-         
-   
-       
-     })
+  
 
   }
 
   ngOnInit(){
 
 
+    this.service.currencyMessage.subscribe( result =>{
+      this.data=result;    
+      this.countryUpdate('USD'); 
+     })
+     
     this.service.countryMessage.subscribe( result =>{
       this.selectCountry=result;
       this.countryUpdate(this.selectCountry);
@@ -135,7 +128,7 @@ export class Tab2Page  implements OnInit{
   }
 
   public onReady() {
-    console.log('Chart ready');
+    
   }
 
   public onError(error: ChartErrorEvent) {

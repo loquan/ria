@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <ion-input placeholder="Text Input" placeholder="200 EUR" [(ngModel)]="amount" (keyup)="keyup($event)" ></ion-input>
+      <ion-input style="background-color: grey;" placeholder="Text Input" placeholder="200 EUR" [(ngModel)]="amount" (keyup)="keyup($event)" ></ion-input>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,10 +13,12 @@
     </ion-toolbar>
   </ion-header>
   
+
+  
   <div *ngFor="let country of countries; index as i" style="margin: 0px 60px 0px 50px;">
     
  
-    <ion-button color="primary" (click)="selectCountry(country)" style="height:80px;width:300px" >
+    <ion-button color="primary" (click)="selectCountry(country)" style="height:80px;width:400px" >
       <ion-grid>
         <ion-row>
           <ion-col col-5><div ><h3>{{country}}</h3></div></ion-col>

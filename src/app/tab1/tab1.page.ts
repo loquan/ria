@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ThrowStmt } from '@angular/compiler';
+import { ChangeDetectorRef } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 interface currencyStruct {
     countryString:string;
@@ -38,6 +40,8 @@ export class Tab1Page {
   dateRange:string[]; 
   router: Router;
   countries:string[]=[];
+  //totalObserve = new BehaviorSubject([]);
+  
   total:number[]=[];
   rateNumber:number[]=[];
   eur:string[]=[];
@@ -45,7 +49,7 @@ export class Tab1Page {
   
 
 
-  constructor(private service: CurrencyService,private http: HttpClient,private route:Router) {
+  constructor(private service: CurrencyService,private http: HttpClient,private route:Router,private ref:ChangeDetectorRef) {
 
     this.router=this.route;
     // this.service.currencyMessage.subscribe(result => {
@@ -68,8 +72,7 @@ export class Tab1Page {
        
         this.http.get<any[]>('https://api.ratesapi.io/api/history?start_at=2021-02-24&end_at=2021-03-17').subscribe(
           (data)=>{
-              console.log("found");
-              console.log(data);
+              
               this.service.currency.next(data);
               let count=0;
               for( let key in data['rates'])  
@@ -92,7 +95,8 @@ export class Tab1Page {
                count++;
                   
               }
-              console.log("country:"+this.currencyData); 
+              //this.totalObserve.next(this.total);
+              
     
           }) 
           
@@ -119,14 +123,15 @@ selectCountry(country){
 keyup(event){
   
   if(event.keyCode==13){
-    alert("amount:"+this.amount);
-
-    for(let i=0;i<this.rateNumber.length;i++)
-    {
-      this.total[i]=this.rateNumber[i]*this.amount;
-    }
     
 
+     for(let i=0;i<this.rateNumber.length;i++)
+     {
+       this.total[i]=this.rateNumber[i]*this.amount;
+     }
+    this.ref.detectChanges();
+    
+    //this.search();
   }
   
 
