@@ -15,18 +15,18 @@
   
 
   
-  <div *ngFor="let country of countries; index as i" style="margin: 0px 60px 0px 50px;">
+  <div *ngFor="let tot of total; index as i" style="margin: 0px 60px 0px 50px;">
     
  
-    <ion-button color="primary" (click)="selectCountry(country)" style="height:80px;width:400px" >
+    <ion-button color="primary" (click)="selectCountry(countries[i])" style="height:80px;width:400px" >
       <ion-grid>
         <ion-row>
-          <ion-col col-5><div ><h3>{{country}}</h3></div></ion-col>
+          <ion-col col-5><div ><h3>{{countries[i]}}</h3></div></ion-col>
           <ion-col col-2><ion-icon name="caret-forward-outline" style="background-color: coral;"></ion-icon></ion-col >
               <ion-col col-5>
-                <div><h5>{{total[i]}}</h5></div>
-                <div>1&nbsp;EUR= {{countryNum[i]}}&nbsp;{{country}}</div>
-                <div>1&nbsp;{{country}}= EUR&nbsp; {{eur[i]}}</div>
+                <div><h5>{{tot}}</h5></div>
+                <div>1&nbsp;EUR= {{countryNum[i]}}&nbsp;{{countries[i]}}</div>
+                <div>1&nbsp;{{countries[i]}}= EUR&nbsp; {{eur[i]}}</div>
               </ion-col >   
           
         </ion-row>
