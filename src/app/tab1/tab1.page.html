@@ -13,5 +13,9 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div *ngFor="let country of countries">
+    
+    <ion-button color="primary" (click)="selectCountry(country)"  >{{country}}</ion-button>
+</div>
+
 </ion-content>

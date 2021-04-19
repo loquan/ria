@@ -13,5 +13,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
+ 
+    <google-chart
+      width="600"
+      [title]="charts.title"
+      [type]="charts.type"
+      [data]="charts.data"
+      [columns]="charts.columns"
+      [options]="charts.options"
+  
+  
+    >
+    </google-chart>
+
+
+ 
+
+  
 </ion-content>

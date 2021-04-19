@@ -1,5 +1,7 @@
 {
-  "name": "ria",
-  "integrations": {},
+  "name": "ria-test",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
