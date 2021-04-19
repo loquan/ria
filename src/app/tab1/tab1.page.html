@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      <ion-input placeholder="Text Input" placeholder="200 EUR" [(ngModel)]="amount" (keyup)="keyup($event)" ></ion-input>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,17 +9,17 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large"></ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-input placeholder="Text Input" placeholder="200 EUR" [(ngModel)]="amount" (keyup)="keyup($event)" ></ion-input>
-  <div *ngFor="let country of countries; index as i">
+  
+  <div *ngFor="let country of countries; index as i" style="margin: 0px 60px 0px 50px;">
     
  
-    <ion-button color="primary" (click)="selectCountry(country)" style="height:80px;width:400px" >
+    <ion-button color="primary" (click)="selectCountry(country)" style="height:80px;width:300px" >
       <ion-grid>
         <ion-row>
-          <ion-col col-5><div></div><div>{{country}}</div><div></div></ion-col>
+          <ion-col col-5><div ><h3>{{country}}</h3></div></ion-col>
           <ion-col col-2><ion-icon name="caret-forward-outline" style="background-color: coral;"></ion-icon></ion-col >
               <ion-col col-5>
                 <div><h5>{{total[i]}}</h5></div>
